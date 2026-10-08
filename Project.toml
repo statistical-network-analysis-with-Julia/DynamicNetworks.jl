@@ -1,0 +1,29 @@
+name = "DynamicNetworks"
+uuid = "2ec8e4a1-edb9-4657-8cef-4d333c164b0b"
+authors = ["Statistical Network Analysis with Julia"]
+version = "0.2.0"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Graphs = "86223c79-3864-5bf0-83f7-82e725a168b6"
+NetworkCore = "027a387e-e55f-4537-a155-5037e5a23bdb"
+PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
+
+[sources]
+NetworkCore = {path = "../NetworkCore.jl"}
+
+[compat]
+Aqua = "0.8"
+Dates = "1.11.0"
+Graphs = "1.9"
+NetworkCore = "0.2"
+PrecompileTools = "1"
+Test = "1"
+julia = "1.12"
+
+[extras]
+Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Aqua", "Test"]

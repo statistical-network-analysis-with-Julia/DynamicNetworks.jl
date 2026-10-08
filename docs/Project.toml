@@ -1,0 +1,11 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+NetworkCore = "027a387e-e55f-4537-a155-5037e5a23bdb"
+DynamicNetworks = "2ec8e4a1-edb9-4657-8cef-4d333c164b0b"
+
+[sources]
+DynamicNetworks = {path = ".."}
+NetworkCore = {path = "../../NetworkCore.jl"}
+
+[compat]
+Documenter = "1"
