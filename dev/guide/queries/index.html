@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Time Queries · DynamicNetworks.jl</title><meta name="title" content="Time Queries · DynamicNetworks.jl"/><meta property="og:title" content="Time Queries · DynamicNetworks.jl"/><meta property="twitter:title" content="Time Queries · DynamicNetworks.jl"/><meta name="description" content="Documentation for DynamicNetworks.jl."/><meta property="og:description" content="Documentation for DynamicNetworks.jl."/><meta property="twitter:description" content="Documentation for DynamicNetworks.jl."/><meta property="og:url" content="https://statistical-network-analysis-with-Julia.github.io/DynamicNetworks.jl/dev/guide/queries/"/><meta property="twitter:url" content="https://statistical-network-analysis-with-Julia.github.io/DynamicNetworks.jl/dev/guide/queries/"/><link rel="canonical" href="https://statistical-network-analysis-with-Julia.github.io/DynamicNetworks.jl/dev/guide/queries/"/><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.63.2/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../search_index.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script><link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.svg" alt="DynamicNetworks.jl logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href="../../">DynamicNetworks.jl</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li><a class="tocitem" href="../../">Home</a></li><li><a class="tocitem" href="../../getting_started/">Getting Started</a></li><li><span class="tocitem">User Guide</span><ul><li><a class="tocitem" href="../dynamic_networks/">Dynamic Networks</a></li><li><a class="tocitem" href="../spells/">Spells and Activity</a></li><li class="is-active"><a class="tocitem" href>Time Queries</a><ul class="internal"><li><a class="tocitem" href="#Activity-Queries"><span>Activity Queries</span></a></li><li><a class="tocitem" href="#Network-Extraction"><span>Network Extraction</span></a></li><li><a class="tocitem" href="#Time-Varying-Attributes"><span>Time-Varying Attributes</span></a></li><li><a class="tocitem" href="#Practical-Examples"><span>Practical Examples</span></a></li><li><a class="tocitem" href="#Summary-of-Query-Functions"><span>Summary of Query Functions</span></a></li></ul></li><li><a class="tocitem" href="../r_concordance/">Coming from R</a></li></ul></li><li><span class="tocitem">API Reference</span><ul><li><a class="tocitem" href="../../api/types/">Types</a></li><li><a class="tocitem" href="../../api/functions/">Functions</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">User Guide</a></li><li class="is-active"><a href>Time Queries</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Time Queries</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/Statistical-network-analysis-with-Julia/DynamicNetworks.jl" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/Statistical-network-analysis-with-Julia/DynamicNetworks.jl/blob/main/docs/src/guide/queries.md" title="Edit source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="Time-Queries"><a class="docs-heading-anchor" href="#Time-Queries">Time Queries</a><a id="Time-Queries-1"></a><a class="docs-heading-anchor-permalink" href="#Time-Queries" title="Permalink"></a></h1><p>This guide covers how to query activity status, extract network snapshots, and work with time-varying attributes in DynamicNetworks.jl.</p><h2 id="Activity-Queries"><a class="docs-heading-anchor" href="#Activity-Queries">Activity Queries</a><a id="Activity-Queries-1"></a><a class="docs-heading-anchor-permalink" href="#Activity-Queries" title="Permalink"></a></h2><h3 id="Point-in-Time-Queries"><a class="docs-heading-anchor" href="#Point-in-Time-Queries">Point-in-Time Queries</a><a id="Point-in-Time-Queries-1"></a><a class="docs-heading-anchor-permalink" href="#Point-in-Time-Queries" title="Permalink"></a></h3><p>The most basic query checks whether a vertex or edge is active at a specific time:</p><pre><code class="language-julia hljs">using DynamicNetworks
+
+dnet = DynamicNetwork(5; observation_start=0.0, observation_end=50.0)
+activate!(dnet, 0.0, 30.0; vertex=1)
+activate!(dnet, 10.0, 50.0; vertex=2)
+activate!(dnet, 5.0, 25.0; edge=(1, 2))
+
+# Point queries
+is_active(dnet, 10.0; vertex=1)   # true  (0 &lt;= 10 &lt; 30)
+is_active(dnet, 35.0; vertex=1)   # false (30 &lt;= 35)
+is_active(dnet, 10.0; edge=(1, 2)) # true  (5 &lt;= 10 &lt; 25)</code></pre><p>The spell is half-open: <code>onset &lt;= t &lt; terminus</code>. This means an element becomes inactive exactly at its terminus time.</p><p>Vertices 3, 4 and 5 have no spells, so they are <strong>active at all times</strong> (R&#39;s <code>active.default = TRUE</code>). Every query and extraction takes <code>active_default=false</code> to treat elements without a spell record as inactive:</p><pre><code class="language-julia hljs">is_active(dnet, 10.0; vertex=3)                        # true: no spells
+is_active(dnet, 10.0; vertex=3, active_default=false)  # false</code></pre><h3 id="Interval-Queries"><a class="docs-heading-anchor" href="#Interval-Queries">Interval Queries</a><a id="Interval-Queries-1"></a><a class="docs-heading-anchor-permalink" href="#Interval-Queries" title="Permalink"></a></h3><p>Check activity over a time interval with two rules:</p><pre><code class="language-julia hljs"># Rule :any -- active at ANY point during [10, 35]
+is_active(dnet, 10.0, 35.0; vertex=1, rule=:any)  # true (overlaps with [0, 30))
+
+# Rule :all -- active THROUGHOUT [10, 35]
+is_active(dnet, 10.0, 35.0; vertex=1, rule=:all)  # false (not active at t=30)
+
+# Active throughout [10, 25]
+is_active(dnet, 10.0, 25.0; vertex=1, rule=:all)  # true (contained in [0, 30))</code></pre><table><tr><th style="text-align: right">Rule</th><th style="text-align: right">Meaning</th><th style="text-align: right">Condition</th></tr><tr><td style="text-align: right"><code>:any</code></td><td style="text-align: right">Active at any point in the interval</td><td style="text-align: right">Any spell overlaps with <code>[onset, terminus)</code></td></tr><tr><td style="text-align: right"><code>:all</code></td><td style="text-align: right">Active throughout the entire interval</td><td style="text-align: right">The union of the spells covers <code>[onset, terminus)</code> (adjacent spells count)</td></tr></table><h3 id="Listing-Active-Elements"><a class="docs-heading-anchor" href="#Listing-Active-Elements">Listing Active Elements</a><a id="Listing-Active-Elements-1"></a><a class="docs-heading-anchor-permalink" href="#Listing-Active-Elements" title="Permalink"></a></h3><p>Get all active vertices or edges at a time:</p><pre><code class="language-julia hljs"># All vertices active at t=15
+verts = active_vertices(dnet, 15.0)
+println(&quot;Active vertices: &quot;, verts)
+
+# All edges active at t=15
+edgs = active_edges(dnet, 15.0)
+println(&quot;Active edges: &quot;, edgs)</code></pre><p>These functions are useful for computing cross-sectional network statistics at specific time points.</p><h3 id="Complete-Activity-History"><a class="docs-heading-anchor" href="#Complete-Activity-History">Complete Activity History</a><a id="Complete-Activity-History-1"></a><a class="docs-heading-anchor-permalink" href="#Complete-Activity-History" title="Permalink"></a></h3><p>Retrieve all spells for an element:</p><pre><code class="language-julia hljs"># All spells for vertex 1
+spells = when_vertex(dnet, 1)
+for s in spells
+    println(&quot;Active from $(s.onset) to $(s.terminus), duration: $(spell_duration(s))&quot;)
+end
+
+# All spells for edge (1, 2)
+spells = when_edge(dnet, 1, 2)
+
+# Activity range (earliest onset to latest terminus)
+range = get_activity_range(dnet; vertex=1)
+println(&quot;First active: $(range[1]), Last active: $(range[2])&quot;)</code></pre><h2 id="Network-Extraction"><a class="docs-heading-anchor" href="#Network-Extraction">Network Extraction</a><a id="Network-Extraction-1"></a><a class="docs-heading-anchor-permalink" href="#Network-Extraction" title="Permalink"></a></h2><h3 id="Point-Extraction"><a class="docs-heading-anchor" href="#Point-Extraction">Point Extraction</a><a id="Point-Extraction-1"></a><a class="docs-heading-anchor-permalink" href="#Point-Extraction" title="Permalink"></a></h3><p>Extract a static <code>Network</code> representing the state at a single time:</p><pre><code class="language-julia hljs">using NetworkCore   # nv, ne
+using Graphs        # connected_components (Graphs.jl, a separate package)
+
+# Snapshot at t=15
+snapshot = network_extract(dnet, 15.0)
+
+# Use with standard network functions
+println(&quot;Vertices: &quot;, nv(snapshot))
+println(&quot;Edges: &quot;, ne(snapshot))
+
+# Use with Graphs.jl algorithms
+cc = connected_components(snapshot)
+println(&quot;Components: &quot;, length(cc))</code></pre><h3 id="Vertex-Re-indexing"><a class="docs-heading-anchor" href="#Vertex-Re-indexing">Vertex Re-indexing</a><a id="Vertex-Re-indexing-1"></a><a class="docs-heading-anchor-permalink" href="#Vertex-Re-indexing" title="Permalink"></a></h3><p>When extracting a snapshot, only active vertices are included (here vertices 3, 4 and 5 count, since they have no spells), and they are re-indexed starting from 1; each keeps its original ID in the <code>:vertex_pid</code> attribute. An edge is included only when both endpoints are active. Static vertex attributes from the underlying network are carried over; <code>retain_all_vertices=true</code> keeps every vertex and stable IDs.</p><pre><code class="language-julia hljs"># If vertices 2, 5, 8 are active at t=10
+# They become vertices 1, 2, 3 in the extracted network
+snapshot = network_extract(dnet, 10.0)
+# nv(snapshot) == 3</code></pre><h3 id="Interval-Extraction"><a class="docs-heading-anchor" href="#Interval-Extraction">Interval Extraction</a><a id="Interval-Extraction-1"></a><a class="docs-heading-anchor-permalink" href="#Interval-Extraction" title="Permalink"></a></h3><p>Extract a network representing activity over a time range:</p><pre><code class="language-julia hljs"># Any activity during [10, 30]: includes elements active at any point
+snapshot_any = network_extract(dnet, 10.0, 30.0; rule=:any)
+
+# Active throughout [10, 30]: only elements continuously active
+snapshot_all = network_extract(dnet, 10.0, 30.0; rule=:all)</code></pre><p>Use cases:</p><ul><li><code>:any</code> – aggregate view of &quot;who interacted during this period&quot;</li><li><code>:all</code> – stable ties that persisted throughout the period</li></ul><h3 id="Time-Series-of-Snapshots"><a class="docs-heading-anchor" href="#Time-Series-of-Snapshots">Time Series of Snapshots</a><a id="Time-Series-of-Snapshots-1"></a><a class="docs-heading-anchor-permalink" href="#Time-Series-of-Snapshots" title="Permalink"></a></h3><p>Extract snapshots at regular intervals for temporal analysis:</p><pre><code class="language-julia hljs"># Snapshots every 10 time units
+times = collect(0.0:10.0:100.0)
+snapshots = network_slice(dnet, times)
+
+# Compute density time series
+densities = Float64[]
+for snap in snapshots
+    n = nv(snap)
+    if n &gt; 1
+        max_e = is_directed(snap) ? n * (n - 1) : n * (n - 1) / 2
+        push!(densities, ne(snap) / max_e)
+    else
+        push!(densities, 0.0)
+    end
+end
+
+for (t, d) in zip(times, densities)
+    println(&quot;t=$t: density = $(round(d, digits=3))&quot;)
+end</code></pre><h3 id="Collapsing-to-Static"><a class="docs-heading-anchor" href="#Collapsing-to-Static">Collapsing to Static</a><a id="Collapsing-to-Static-1"></a><a class="docs-heading-anchor-permalink" href="#Collapsing-to-Static" title="Permalink"></a></h3><p>Collapse the entire dynamic network to a single static network:</p><pre><code class="language-julia hljs"># Ties ever active between ever-active vertices; every vertex is kept
+static = network_collapse(dnet)
+println(&quot;Ever-active edges: &quot;, ne(static))</code></pre><p><code>network_collapse(dnet; onset, terminus, rule)</code> restricts this to an interval and equals <code>network_extract(dnet, onset, terminus; rule, retain_all_vertices=true)</code>.</p><h2 id="Time-Varying-Attributes"><a class="docs-heading-anchor" href="#Time-Varying-Attributes">Time-Varying Attributes</a><a id="Time-Varying-Attributes-1"></a><a class="docs-heading-anchor-permalink" href="#Time-Varying-Attributes" title="Permalink"></a></h2><p>Time-varying attributes (TEAs) are attributes whose values change over time. Each value is associated with a spell during which it is valid.</p><h3 id="Setting-Vertex-TEAs"><a class="docs-heading-anchor" href="#Setting-Vertex-TEAs">Setting Vertex TEAs</a><a id="Setting-Vertex-TEAs-1"></a><a class="docs-heading-anchor-permalink" href="#Setting-Vertex-TEAs" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Disease status changes over time
+set_vertex_attribute_active!(dnet, 1, :status, &quot;susceptible&quot;, 0.0, 10.0)
+set_vertex_attribute_active!(dnet, 1, :status, &quot;infected&quot;, 10.0, 25.0)
+set_vertex_attribute_active!(dnet, 1, :status, &quot;recovered&quot;, 25.0, 100.0)
+
+# Numeric attribute
+set_vertex_attribute_active!(dnet, 1, :risk_score, 0.1, 0.0, 10.0)
+set_vertex_attribute_active!(dnet, 1, :risk_score, 0.9, 10.0, 25.0)
+set_vertex_attribute_active!(dnet, 1, :risk_score, 0.05, 25.0, 100.0)</code></pre><h3 id="Getting-Vertex-TEAs"><a class="docs-heading-anchor" href="#Getting-Vertex-TEAs">Getting Vertex TEAs</a><a id="Getting-Vertex-TEAs-1"></a><a class="docs-heading-anchor-permalink" href="#Getting-Vertex-TEAs" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Query at a specific time
+status = get_vertex_attribute_active(dnet, 1, :status, 5.0)
+println(status)  # &quot;susceptible&quot;
+
+status = get_vertex_attribute_active(dnet, 1, :status, 15.0)
+println(status)  # &quot;infected&quot;
+
+status = get_vertex_attribute_active(dnet, 1, :status, 50.0)
+println(status)  # &quot;recovered&quot;
+
+# Returns nothing if no value is defined at that time
+val = get_vertex_attribute_active(dnet, 1, :unknown, 5.0)
+println(val)  # nothing</code></pre><h3 id="Edge-TEAs"><a class="docs-heading-anchor" href="#Edge-TEAs">Edge TEAs</a><a id="Edge-TEAs-1"></a><a class="docs-heading-anchor-permalink" href="#Edge-TEAs" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Set time-varying edge weight
+set_edge_attribute_active!(dnet, 1, 2, :weight, 1.0, 5.0, 15.0)
+set_edge_attribute_active!(dnet, 1, 2, :weight, 3.5, 15.0, 25.0)
+
+# Query
+w = get_edge_attribute_active(dnet, 1, 2, :weight, 10.0)
+println(w)  # 1.0
+
+w = get_edge_attribute_active(dnet, 1, 2, :weight, 20.0)
+println(w)  # 3.5</code></pre><h3 id="Listing-TEAs"><a class="docs-heading-anchor" href="#Listing-TEAs">Listing TEAs</a><a id="Listing-TEAs-1"></a><a class="docs-heading-anchor-permalink" href="#Listing-TEAs" title="Permalink"></a></h3><pre><code class="language-julia hljs"># All time-varying vertex attribute names
+vertex_teas = list_vertex_attributes_active(dnet)
+println(&quot;Vertex TEAs: &quot;, vertex_teas)  # [:status, :risk_score]
+
+# All time-varying edge attribute names
+edge_teas = list_edge_attributes_active(dnet)
+println(&quot;Edge TEAs: &quot;, edge_teas)  # [:weight]</code></pre><h2 id="Practical-Examples"><a class="docs-heading-anchor" href="#Practical-Examples">Practical Examples</a><a id="Practical-Examples-1"></a><a class="docs-heading-anchor-permalink" href="#Practical-Examples" title="Permalink"></a></h2><h3 id="Tracking-Network-Evolution"><a class="docs-heading-anchor" href="#Tracking-Network-Evolution">Tracking Network Evolution</a><a id="Tracking-Network-Evolution-1"></a><a class="docs-heading-anchor-permalink" href="#Tracking-Network-Evolution" title="Permalink"></a></h3><pre><code class="language-julia hljs">using DynamicNetworks
+
+# Create a growing network
+dnet = DynamicNetwork(10; observation_start=0.0, observation_end=100.0)
+activate_vertices!(dnet, collect(1:10), 0.0, 100.0)
+
+# Edges form progressively
+activate!(dnet, 0.0, 100.0; edge=(1, 2))
+activate!(dnet, 10.0, 100.0; edge=(2, 3))
+activate!(dnet, 20.0, 100.0; edge=(3, 4))
+activate!(dnet, 30.0, 100.0; edge=(4, 5))
+activate!(dnet, 40.0, 100.0; edge=(5, 6))
+activate!(dnet, 50.0, 80.0; edge=(6, 7))   # Temporary edge
+activate!(dnet, 60.0, 100.0; edge=(7, 8))
+activate!(dnet, 70.0, 100.0; edge=(8, 9))
+activate!(dnet, 80.0, 100.0; edge=(9, 10))
+
+# Track growth over time
+for t in 0.0:10.0:100.0
+    edgs = active_edges(dnet, t)
+    println(&quot;t=$t: $(length(edgs)) active edges&quot;)
+end</code></pre><h3 id="Epidemic-Simulation-Data"><a class="docs-heading-anchor" href="#Epidemic-Simulation-Data">Epidemic Simulation Data</a><a id="Epidemic-Simulation-Data-1"></a><a class="docs-heading-anchor-permalink" href="#Epidemic-Simulation-Data" title="Permalink"></a></h3><pre><code class="language-julia hljs"># SIR model data
+dnet = DynamicNetwork(20; observation_start=0.0, observation_end=50.0)
+activate_vertices!(dnet, collect(1:20), 0.0, 50.0)
+
+# Set initial states
+for v in 1:20
+    set_vertex_attribute_active!(dnet, v, :state, &quot;S&quot;, 0.0, 50.0)
+end
+
+# Patient zero infected at t=0
+set_vertex_attribute_active!(dnet, 1, :state, &quot;I&quot;, 0.0, 10.0)
+set_vertex_attribute_active!(dnet, 1, :state, &quot;R&quot;, 10.0, 50.0)
+
+# Check state at any time
+for v in [1, 5, 10]
+    state = get_vertex_attribute_active(dnet, v, :state, 5.0)
+    println(&quot;Vertex $v at t=5: $state&quot;)
+end</code></pre><h3 id="Window-Based-Analysis"><a class="docs-heading-anchor" href="#Window-Based-Analysis">Window-Based Analysis</a><a id="Window-Based-Analysis-1"></a><a class="docs-heading-anchor-permalink" href="#Window-Based-Analysis" title="Permalink"></a></h3><pre><code class="language-julia hljs"># Analyze the network in non-overlapping windows of the observation period
+# (`nothing` when none was set; fall back to the range of the data)
+window_size = 10.0
+period = get_observation_period(dnet)
+start, stop = isnothing(period) ? extrema(get_change_times(dnet)) : period
+
+for t in start:window_size:(stop - window_size)
+    snap = network_extract(dnet, t, t + window_size; rule=:any)
+    println(&quot;Window [$t, $(t + window_size)): $(nv(snap)) vertices, $(ne(snap)) edges&quot;)
+end</code></pre><h2 id="Summary-of-Query-Functions"><a class="docs-heading-anchor" href="#Summary-of-Query-Functions">Summary of Query Functions</a><a id="Summary-of-Query-Functions-1"></a><a class="docs-heading-anchor-permalink" href="#Summary-of-Query-Functions" title="Permalink"></a></h2><table><tr><th style="text-align: right">Function</th><th style="text-align: right">Returns</th><th style="text-align: right">Description</th></tr><tr><td style="text-align: right"><code>is_active(dnet, t; vertex=v)</code></td><td style="text-align: right"><code>Bool</code></td><td style="text-align: right">Is vertex active at time t?</td></tr><tr><td style="text-align: right"><code>is_active(dnet, t; edge=(i,j))</code></td><td style="text-align: right"><code>Bool</code></td><td style="text-align: right">Is edge active at time t?</td></tr><tr><td style="text-align: right"><code>is_active(dnet, t1, t2; vertex=v, rule=r)</code></td><td style="text-align: right"><code>Bool</code></td><td style="text-align: right">Is vertex active during interval?</td></tr><tr><td style="text-align: right"><code>active_vertices(dnet, t)</code></td><td style="text-align: right"><code>Vector{T}</code></td><td style="text-align: right">All active vertices at time t</td></tr><tr><td style="text-align: right"><code>active_edges(dnet, t)</code></td><td style="text-align: right"><code>Vector{Tuple}</code></td><td style="text-align: right">All active edges at time t</td></tr><tr><td style="text-align: right"><code>get_spells(dnet; vertex=v)</code></td><td style="text-align: right"><code>Vector{Spell}</code></td><td style="text-align: right">Stored spells for a vertex</td></tr><tr><td style="text-align: right"><code>get_vertex_activity(dnet, v)</code></td><td style="text-align: right"><code>Vector{Spell}</code></td><td style="text-align: right">R view: <code>(-Inf, Inf)</code> when no record</td></tr><tr><td style="text-align: right"><code>get_change_times(dnet)</code></td><td style="text-align: right"><code>Vector{Time}</code></td><td style="text-align: right">Sorted onsets and termini</td></tr><tr><td style="text-align: right"><code>get_observation_period(dnet)</code></td><td style="text-align: right"><code>Tuple</code> or <code>nothing</code></td><td style="text-align: right">The given window; <code>nothing</code> when none was set</td></tr><tr><td style="text-align: right"><code>when_vertex(dnet, v)</code></td><td style="text-align: right"><code>Vector{Spell}</code></td><td style="text-align: right">Alias for get_spells vertex</td></tr><tr><td style="text-align: right"><code>when_edge(dnet, i, j)</code></td><td style="text-align: right"><code>Vector{Spell}</code></td><td style="text-align: right">Alias for get_spells edge</td></tr><tr><td style="text-align: right"><code>get_activity_range(dnet; vertex=v)</code></td><td style="text-align: right"><code>Tuple</code></td><td style="text-align: right">Earliest onset to latest terminus</td></tr><tr><td style="text-align: right"><code>network_extract(dnet, t)</code></td><td style="text-align: right"><code>Network</code></td><td style="text-align: right">Static snapshot at time t</td></tr><tr><td style="text-align: right"><code>network_extract(dnet, t1, t2)</code></td><td style="text-align: right"><code>Network</code></td><td style="text-align: right">Static snapshot over interval</td></tr><tr><td style="text-align: right"><code>network_slice(dnet, times)</code></td><td style="text-align: right"><code>Vector{Network}</code></td><td style="text-align: right">Multiple snapshots</td></tr><tr><td style="text-align: right"><code>network_collapse(dnet)</code></td><td style="text-align: right"><code>Network</code></td><td style="text-align: right">Ever-active ties, all vertices kept</td></tr></table><p>All activity queries and extractions accept <code>active_default</code> (default <code>true</code>).</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../spells/">« Spells and Activity</a><a class="docs-footer-nextpage" href="../r_concordance/">Coming from R »</a><div class="flexbox-break"></div><p class="footer-message"><a href="/">Ecosystem home</a> · <a href="/packages/">Packages</a> · <a href="/getting-started/">Get started</a> · <a href="/capabilities/">Capabilities</a> — Built with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.19.0 on <span class="colophon-date" title="Thursday 8 October 2026 06:50">Thursday 8 October 2026</span>. Using Julia version 1.13.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>

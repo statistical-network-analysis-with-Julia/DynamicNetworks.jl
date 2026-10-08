@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">DynamicNetworks.jl</title>
+  <desc id="desc">Three activity spells with closed onsets and open termini: networks active over time.</desc>
+  <path d="M32 218H226M210 204 226 218 210 232" fill="none" stroke="#4063D8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 52H165" fill="none" stroke="#389826" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="42" cy="52" r="17" fill="#389826"/>
+  <circle cx="184" cy="52" r="17" fill="none" stroke="#389826" stroke-width="10"/>
+  <path d="M84 108H201" fill="none" stroke="#CB3C33" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="84" cy="108" r="17" fill="#CB3C33"/>
+  <circle cx="220" cy="108" r="17" fill="none" stroke="#CB3C33" stroke-width="10"/>
+  <path d="M42 164H129" fill="none" stroke="#9558B2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="42" cy="164" r="17" fill="#9558B2"/>
+  <circle cx="148" cy="164" r="17" fill="none" stroke="#9558B2" stroke-width="10"/>
+</svg>
